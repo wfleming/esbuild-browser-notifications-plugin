@@ -9,6 +9,7 @@ export interface BrowserNotificationsPluginOptions {
   host?: string,
   port?: number,
   listenUrl?: string, // defaults to `http://host:port`
+  maxEventListeners?: number, // if you have a lot of esbuild build objects, set this
 }
 
 const DEFAULT_OPTIONS = {
@@ -44,6 +45,10 @@ export function browserNotificationsPlugin(options: BrowserNotificationsPluginOp
     listenUrl = options.listenUrl ?? `http://${host === "0.0.0.0" ? "localhost" : host}:${port}`,
     eventHub = new EventEmitter(),
     server = createServer(host, port, eventHub)
+
+  if (options.maxEventListeners) {
+    eventHub.setMaxListeners(options.maxEventListeners)
+  }
 
   return {
     name: "browser-notifications",
