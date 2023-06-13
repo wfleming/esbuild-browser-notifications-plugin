@@ -1,6 +1,6 @@
 {
   "name": "@wfleming/esbuild-browser-notifications-plugin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "esbuild plugin for sass/scss files supporting both css loader and css result import (lit-element)",
   "main": "lib/index.js",
   "keywords": [
