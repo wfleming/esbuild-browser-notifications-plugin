@@ -40,7 +40,9 @@ import {browserNotificationsPlugin} from "@wfleming/esbuild-browser-notification
 await esbuild.build({
   ...
   // You want to make this conditional on being in development, which will depend on your setup
-  plugins: [browserNotificationsPlugin()]
+  plugins: [browserNotificationsPlugin()],
+  // this is not required, but without it you'll only get errors/warnings, not success notifications
+  metafile: true,
 })
 ```
 
