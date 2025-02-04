@@ -1,6 +1,6 @@
 {
   "name": "@wfleming/esbuild-browser-notifications-plugin",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "description": "esbuild plugin for sass/scss files supporting both css loader and css result import (lit-element)",
   "main": "lib/index.js",
   "keywords": [
@@ -30,10 +30,10 @@
   },
   "devDependencies": {
     "@types/node": "^18.15.12",
-    "esbuild": "^0.18.0 || ^0.19.0",
+    "esbuild": "^0.19.0",
     "typescript": "^5.0.4"
   },
   "peerDependencies": {
-    "esbuild": ">=0.17.0 <0.19.0"
+    "esbuild": ">=0.17.0"
   }
 }

@@ -13,15 +13,20 @@ function buildListeners(eventHub: EventEmitter) {
     })
     response.flushHeaders()
 
-    request.on('close', () => response.end('OK'))
-
     let eventId = 0
-    eventHub.addListener("buildEnd", ev => {
+    const listener = ev => {
       response.write("event: buildEnd\n")
       response.write(`data: ${JSON.stringify(ev)}\n`)
       response.write(`id: ${eventId}\n\n`)
       eventId += 1
+    }
+
+    eventHub.addListener("buildEnd", listener)
+    request.on('close', () => {
+      eventHub.removeListener("buildEnd", listener)
+      response.end('OK')
     })
+
   }
 
   return (request: http.IncomingMessage, response: http.ServerResponse) => {
